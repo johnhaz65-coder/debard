@@ -1,721 +1,398 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jacques Debard — Nettoyage Façades & Toitures · Saint-Malo · Dinard</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300;1,500&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#0C0C0A;
-  --stone:#161614;
-  --panel:#1C1C19;
-  --off:#F8F5EF;
-  --warm:#EFEBE3;
-  --muted:#8A8680;
-  --line:rgba(248,245,239,.08);
-  --orange:#C85500;
-  --orange2:#E06010;
-}
-html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--off);font-family:'Barlow',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Debard Nettoyage — Nettoyage toiture, façade & terrasse à Dinard</title>
+  <meta name="description" content="Debard Nettoyage intervient à Dinard, Saint-Malo, Rennes, Dinan, Avranches et alentours pour le nettoyage de toitures, façades, murets, terrasses et dallages. Devis gratuit." />
+  <meta name="theme-color" content="#0b3d2e" />
 
-/* ═══ NAV ═══ */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  height:64px;padding:0 52px;
-  display:flex;align-items:center;justify-content:space-between;
-  transition:background .4s,border-color .4s;
-  border-bottom:1px solid transparent;
-}
-nav.s{background:rgba(12,12,10,.92);backdrop-filter:blur(18px);border-color:var(--line)}
-.nav-logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:20px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;
-}
-.nav-logo i{font-style:italic;color:var(--orange2)}
-.nav-links{display:flex;gap:36px}
-.nav-links a{
-  font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(248,245,239,.38);transition:color .2s;
-}
-.nav-links a:hover{color:var(--off)}
-.nav-tel{
-  font-size:11px;font-weight:600;letter-spacing:.1em;
-  border:1px solid rgba(248,245,239,.18);
-  padding:9px 22px;transition:background .2s,border-color .2s;
-}
-.nav-tel:hover{background:var(--orange);border-color:var(--orange)}
+  <meta property="og:title" content="Debard Nettoyage — Toitures, façades & terrasses" />
+  <meta property="og:description" content="Nettoyage professionnel, résultat immédiat, devis gratuit en Bretagne." />
+  <meta property="og:type" content="website" />
 
-/* ═══ HERO ═══ */
-.hero{
-  min-height:100svh;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:120px 52px 80px;
-  position:relative;overflow:hidden;
-}
-/* big texture background — pure CSS */
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(200,85,0,.12), transparent),
-    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(255,255,255,.015), transparent),
-    linear-gradient(160deg, #111110 0%, #0C0C0A 100%);
-}
-/* big decorative letter */
-.hero-deco{
-  position:absolute;right:-2vw;top:50%;transform:translateY(-50%);
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(280px,32vw,520px);font-weight:700;font-style:italic;
-  line-height:1;color:rgba(248,245,239,.025);
-  pointer-events:none;user-select:none;white-space:nowrap;
-}
-.hero-content{position:relative;z-index:2;max-width:900px}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:14px;
-  font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--orange2);margin-bottom:28px;
-  opacity:0;animation:up .7s .15s forwards;
-}
-.hero-tag::before{content:'';display:block;width:32px;height:1px;background:currentColor}
-.hero-h1{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(54px,8vw,118px);
-  font-weight:300;line-height:.95;letter-spacing:-.025em;
-  opacity:0;animation:up .8s .28s forwards;
-}
-.hero-h1 em{font-style:italic;color:rgba(248,245,239,.5);display:block}
-.hero-row{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  gap:40px;margin-top:52px;
-  opacity:0;animation:up .8s .44s forwards;
-}
-.hero-sub{
-  font-size:16px;font-weight:300;line-height:1.72;
-  color:rgba(248,245,239,.45);max-width:420px;
-}
-.hero-actions{display:flex;flex-direction:column;gap:14px;align-items:flex-end;flex-shrink:0}
-.btn-fire{
-  display:inline-flex;align-items:center;gap:14px;
-  background:var(--orange);color:#fff;
-  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  padding:16px 34px;
-  transition:background .2s,gap .25s;white-space:nowrap;
-}
-.btn-fire:hover{background:var(--orange2);gap:22px}
-.hero-devis{
-  font-size:11px;font-weight:400;letter-spacing:.08em;
-  color:rgba(248,245,239,.3);
-}
-/* scroll indicator */
-.hero-scroll{
-  position:absolute;right:52px;bottom:40px;z-index:3;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(248,245,239,.2);
-  opacity:0;animation:fadeIn 1s 1s forwards;
-}
-.hero-scroll::after{
-  content:'';display:block;width:1px;height:48px;
-  background:linear-gradient(to bottom,rgba(248,245,239,.25),transparent);
-  animation:bob 2.5s ease-in-out infinite;
-}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-/* ═══ STRIP : surfaces traitées ═══ */
-.strip{
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  overflow:hidden;padding:18px 0;
-  background:var(--stone);
-}
-.strip-track{
-  display:flex;white-space:nowrap;
-  animation:run 28s linear infinite;
-}
-.strip-item{
-  font-family:'Cormorant Garamond',serif;
-  font-size:16px;font-weight:300;font-style:italic;
-  color:rgba(248,245,239,.28);padding:0 32px;flex-shrink:0;
-}
-.strip-sep{color:var(--orange);font-style:normal}
-@keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  <style>
+    :root{
+      --green:#0b3d2e;
+      --green2:#115740;
+      --lime:#b7f36b;
+      --cream:#f6f1e8;
+      --sand:#dfc9a6;
+      --dark:#07130f;
+      --muted:#647067;
+      --white:#fff;
+      --red:#d61f1f;
+      --shadow:0 24px 80px rgba(0,0,0,.16);
+      --radius:26px;
+    }
 
-/* ═══ PROMESSE (tagline block) ═══ */
-.promesse{
-  padding:110px 52px;
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
-}
-.prm-left h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(38px,5vw,68px);font-weight:300;
-  line-height:1.05;letter-spacing:-.02em;
-}
-.prm-left h2 em{font-style:italic;color:rgba(248,245,239,.45)}
-.prm-left .sub{
-  margin-top:28px;font-size:15px;font-weight:300;
-  color:var(--muted);line-height:1.8;max-width:380px;
-}
-.prm-right{
-  display:flex;flex-direction:column;gap:2px;
-}
-/* big pill badges */
-.badge{
-  display:flex;align-items:center;gap:24px;
-  background:var(--panel);
-  padding:24px 28px;
-  border-left:3px solid transparent;
-  transition:border-color .25s,background .25s;
-}
-.badge:hover{border-color:var(--orange);background:rgba(200,85,0,.07)}
-.badge-icon{
-  width:48px;height:48px;flex-shrink:0;
-  border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;
-}
-.badge-title{font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:3px}
-.badge-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.5}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--dark);
+      background:var(--cream);
+      line-height:1.45;
+    }
 
-/* ═══ SERVICES ═══ */
-.services{padding:0 52px 110px}
-.sec-label{
-  font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--orange2);margin-bottom:16px;
-}
-.sec-h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(36px,4.5vw,60px);font-weight:300;
-  line-height:1.05;letter-spacing:-.02em;margin-bottom:56px;
-}
-.sec-h2 em{font-style:italic;color:rgba(248,245,239,.45)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-.svc-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:2px;background:var(--line);
-  border:1px solid var(--line);
-}
-.svc{
-  background:var(--stone);
-  padding:40px 32px;
-  transition:background .25s;
-  position:relative;overflow:hidden;
-}
-.svc::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:var(--orange);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s cubic-bezier(.23,1,.32,1);
-}
-.svc:hover{background:#1f1f1c}
-.svc:hover::after{transform:scaleX(1)}
-.svc-n{
-  font-family:'Cormorant Garamond',serif;
-  font-size:13px;font-weight:500;letter-spacing:.12em;
-  color:rgba(248,245,239,.15);margin-bottom:20px;
-}
-.svc-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:24px;font-weight:500;letter-spacing:-.01em;margin-bottom:10px;
-}
-.svc-mats{
-  font-size:12px;font-weight:400;color:var(--orange2);
-  letter-spacing:.06em;margin-bottom:12px;
-}
-.svc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.65}
-.svc-pill{
-  display:inline-block;margin-top:18px;
-  font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--orange);border:1px solid rgba(200,85,0,.3);padding:4px 12px;
-}
+    .container{width:min(1180px,calc(100% - 32px));margin:auto}
 
-/* ═══ AVANTAGES HYDROFUGE ═══ */
-.hydro{
-  background:var(--panel);
-  padding:100px 52px;
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
-}
-.hydro-left h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(34px,4vw,54px);font-weight:300;
-  line-height:1.06;letter-spacing:-.02em;margin-bottom:20px;
-}
-.hydro-left h2 em{font-style:italic;color:var(--orange2)}
-.hydro-left p{
-  font-size:14px;font-weight:300;color:var(--muted);
-  line-height:1.8;max-width:360px;margin-bottom:32px;
-}
-/* big guarantee number */
-.hydro-guarantee{
-  display:flex;align-items:flex-end;gap:12px;margin-top:40px;
-  padding-top:40px;border-top:1px solid var(--line);
-}
-.hg-n{
-  font-family:'Cormorant Garamond',serif;
-  font-size:96px;font-weight:300;line-height:.9;color:var(--orange);
-}
-.hg-text{padding-bottom:8px}
-.hg-big{font-size:20px;font-weight:500;letter-spacing:-.01em}
-.hg-sm{
-  font-size:10px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted);margin-top:4px;line-height:1.5;
-}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(246,241,232,.84);
+      border-bottom:1px solid rgba(11,61,46,.12);
+    }
 
-.hydro-right{display:flex;flex-direction:column;gap:2px}
-.adv-row{
-  display:flex;gap:20px;
-  background:rgba(255,255,255,.025);
-  padding:22px 24px;
-  border-left:2px solid transparent;
-  transition:border-color .2s,background .2s;
-  align-items:flex-start;
-}
-.adv-row:hover{border-color:var(--orange2);background:rgba(200,85,0,.05)}
-.adv-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--orange);flex-shrink:0;margin-top:7px;
-}
-.adv-text{font-size:13px;font-weight:300;color:rgba(248,245,239,.65);line-height:1.55}
+    .nav{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
 
-/* ═══ PROCESS ═══ */
-.process{padding:100px 52px;background:var(--stone)}
-.process-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:2px;background:var(--line);margin-top:52px;
-  border:1px solid var(--line);
-}
-.step{
-  background:var(--stone);padding:44px 28px;
-  transition:background .25s;cursor:default;
-}
-.step:hover{background:var(--ink)}
-.step:hover .step-n{color:var(--orange)}
-.step:hover .step-t{color:var(--off)}
-.step-n{
-  font-family:'Cormorant Garamond',serif;
-  font-size:52px;font-weight:300;
-  color:rgba(248,245,239,.1);line-height:1;
-  margin-bottom:22px;transition:color .25s;
-}
-.step-t{
-  font-size:16px;font-weight:600;letter-spacing:-.01em;
-  margin-bottom:10px;transition:color .25s;
-}
-.step-d{font-size:13px;font-weight:300;color:var(--muted);line-height:1.65}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:-.04em;
+      font-size:22px;
+    }
 
-/* ═══ CONTACT ═══ */
-.contact{display:grid;grid-template-columns:1fr 1fr}
-.contact-left{
-  background:var(--orange);
-  padding:100px 52px;
-  display:flex;flex-direction:column;justify-content:center;
-}
-.contact-left h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(38px,5vw,66px);font-weight:300;
-  line-height:1.02;letter-spacing:-.02em;color:#fff;margin-bottom:20px;
-}
-.contact-left h2 em{font-style:italic;color:rgba(255,255,255,.55)}
-.contact-left p{
-  font-size:15px;font-weight:300;color:rgba(255,255,255,.7);
-  line-height:1.75;max-width:360px;margin-bottom:44px;
-}
-.contact-btn{
-  display:inline-flex;align-items:center;gap:14px;
-  background:#fff;color:var(--orange);
-  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:16px 32px;width:fit-content;
-  transition:transform .2s,box-shadow .2s;
-}
-.contact-btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.2)}
+    .logo{
+      width:44px;height:44px;border-radius:15px;
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      color:white;
+      display:grid;place-items:center;
+      box-shadow:0 12px 30px rgba(11,61,46,.22);
+      font-weight:900;
+    }
 
-.contact-right{
-  background:#181815;padding:100px 52px;
-  display:flex;flex-direction:column;justify-content:center;gap:0;
-}
-.cline{
-  display:flex;align-items:center;gap:22px;
-  padding:26px 0;border-bottom:1px solid var(--line);
-  transition:padding-left .2s;
-}
-.cline:first-child{padding-top:0}
-.cline:last-child{border:none;padding-bottom:0}
-.cline:hover{padding-left:8px}
-.cline-icon{
-  width:44px;height:44px;flex-shrink:0;
-  background:rgba(255,255,255,.04);
-  border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;font-size:18px;
-}
-.cline-label{
-  font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(248,245,239,.28);margin-bottom:4px;
-}
-.cline-val{font-size:18px;font-weight:600;color:var(--off);letter-spacing:-.01em}
-.cline-val a{color:var(--off)}
-.cline-val a:hover{color:var(--orange2)}
-.cline-sub{font-size:12px;font-weight:300;color:var(--muted);margin-top:2px}
+    .navlinks{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:700;color:#254138}
+    .navlinks a{opacity:.86}
+    .navlinks a:hover{opacity:1;color:var(--green)}
 
-/* zone note */
-.zone-note{
-  margin-top:36px;padding:22px 24px;
-  background:rgba(200,85,0,.12);
-  border-left:3px solid var(--orange);
-}
-.zone-note strong{
-  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--orange2);display:block;margin-bottom:6px;
-}
-.zone-note span{font-size:13px;font-weight:300;color:rgba(248,245,239,.5);line-height:1.6}
+    .call-btn,.primary-btn,.secondary-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      border-radius:999px;
+      font-weight:900;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
 
-/* ═══ FOOTER ═══ */
-footer{
-  background:#080807;padding:32px 52px;
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-  border-top:1px solid rgba(248,245,239,.04);
-}
-.f-logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:17px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-  color:rgba(248,245,239,.3);
-}
-.f-logo i{font-style:italic;color:var(--orange2)}
-.f-mid{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(248,245,239,.18)}
-.f-right{font-size:10px;color:rgba(248,245,239,.15)}
+    .call-btn{background:var(--green);color:white;padding:13px 18px;box-shadow:0 14px 30px rgba(11,61,46,.22)}
+    .call-btn:hover,.primary-btn:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(11,61,46,.28)}
 
-/* ═══ ANIMATIONS ═══ */
-@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.r{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.25,.46,.45,.94),transform .75s cubic-bezier(.25,.46,.45,.94)}
-.r.on{opacity:1;transform:none}
-.r2{transition-delay:.1s}.r3{transition-delay:.2s}.r4{transition-delay:.3s}
+    .hero{padding:54px 0 46px}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:30px;align-items:center}
 
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:1024px){
-  .promesse{grid-template-columns:1fr;gap:48px}
-  .hydro{grid-template-columns:1fr;gap:48px}
-  .contact{grid-template-columns:1fr}
-  .svc-grid{grid-template-columns:1fr 1fr}
-  .process-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:640px){
-  nav{padding:0 20px}
-  .nav-links{display:none}
-  .hero{padding:100px 20px 64px}
-  .hero-row{flex-direction:column;align-items:flex-start;gap:28px}
-  .hero-actions{align-items:flex-start}
-  .promesse,.services,.hydro,.process{padding-left:20px;padding-right:20px}
-  .svc-grid{grid-template-columns:1fr}
-  .process-grid{grid-template-columns:1fr}
-  .contact-left,.contact-right{padding:72px 24px}
-  footer{flex-direction:column;gap:10px;text-align:center;padding:24px 20px}
-  .hero-scroll{display:none}
-}
-</style>
+    .pill{
+      display:inline-flex;align-items:center;gap:9px;
+      background:rgba(11,61,46,.09);
+      border:1px solid rgba(11,61,46,.16);
+      color:var(--green);
+      padding:9px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size:clamp(42px,6vw,78px);
+      line-height:.92;
+      letter-spacing:-.075em;
+      margin:0 0 20px;
+      color:#06120e;
+    }
+
+    .hero p{
+      font-size:clamp(17px,2vw,21px);
+      color:#425047;
+      margin:0 0 26px;
+      max-width:650px;
+    }
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+    .primary-btn{background:var(--green);color:#fff;padding:16px 23px;font-size:16px;box-shadow:0 14px 30px rgba(11,61,46,.22)}
+    .secondary-btn{background:#fff;color:var(--green);padding:16px 23px;font-size:16px;border:1px solid rgba(11,61,46,.16)}
+    .secondary-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.08)}
+
+    .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:560px}
+    .proof div{background:#fff;border:1px solid rgba(11,61,46,.1);border-radius:18px;padding:14px;box-shadow:0 8px 28px rgba(0,0,0,.04)}
+    .proof b{display:block;font-size:23px;color:var(--green);letter-spacing:-.04em}
+    .proof span{font-size:12px;color:#66736b;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+
+    .hero-card{
+      position:relative;
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:#111;
+      min-height:520px;
+      isolation:isolate;
+    }
+
+    .hero-card img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .hero-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.66) 100%);z-index:1}
+    .hero-caption{position:absolute;z-index:2;left:24px;right:24px;bottom:24px;color:#fff}
+    .hero-caption h2{font-size:30px;line-height:1;margin:0 0 8px;letter-spacing:-.04em}
+    .hero-caption p{margin:0;color:rgba(255,255,255,.85);font-size:15px}
+
+    .section{padding:72px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}
+    .eyebrow{font-size:13px;font-weight:900;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin:0 0 10px}
+    h2{font-size:clamp(32px,4vw,52px);line-height:1;letter-spacing:-.06em;margin:0;color:#07130f}
+    .section-head p{max-width:520px;color:#5d6962;margin:0;font-size:17px}
+
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .service{background:#fff;border:1px solid rgba(11,61,46,.1);border-radius:var(--radius);padding:24px;box-shadow:0 14px 38px rgba(0,0,0,.05)}
+    .icon{width:48px;height:48px;border-radius:16px;background:rgba(11,61,46,.09);display:grid;place-items:center;font-size:24px;margin-bottom:16px}
+    .service h3{font-size:21px;margin:0 0 8px;letter-spacing:-.03em}
+    .service p{margin:0;color:#5d6962}
+
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .work{background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.08);border:1px solid rgba(11,61,46,.1)}
+    .work img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#ddd}
+    .work div{padding:20px}
+    .work h3{margin:0 0 6px;font-size:22px;letter-spacing:-.035em}
+    .work p{margin:0;color:#637069}
+
+    .trust{background:var(--green);color:white;border-radius:36px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;box-shadow:var(--shadow)}
+    .trust h2{color:white}
+    .trust p{color:rgba(255,255,255,.78);font-size:18px}
+    .checks{display:grid;gap:12px}
+    .check{display:flex;gap:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);padding:14px;border-radius:18px;font-weight:800}
+
+    .zones{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .zone-card,.contact-card{background:#fff;border-radius:30px;padding:28px;border:1px solid rgba(11,61,46,.1);box-shadow:0 16px 44px rgba(0,0,0,.06)}
+    .city-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .city-list span{background:rgba(11,61,46,.08);color:var(--green);border-radius:999px;padding:9px 13px;font-weight:800;font-size:14px}
+
+    .contact-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;align-items:stretch}
+    .contact-big{background:linear-gradient(135deg,var(--green),#08251d);color:white;border-radius:34px;padding:34px;box-shadow:var(--shadow)}
+    .contact-big h2{color:white}
+    .contact-big p{color:rgba(255,255,255,.82);font-size:18px}
+    .contact-lines{display:grid;gap:12px;margin-top:22px}
+    .line{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:15px}
+    .line small{display:block;color:rgba(255,255,255,.62);font-weight:900;text-transform:uppercase;font-size:11px;letter-spacing:.08em}
+    .line b{font-size:18px}
+
+    .form{display:grid;gap:12px}
+    .form input,.form textarea,.form select{
+      width:100%;border:1px solid rgba(11,61,46,.14);background:#faf8f2;border-radius:16px;padding:15px;font:inherit;outline:none;
+    }
+    .form textarea{min-height:128px;resize:vertical}
+    .form button{border:0;cursor:pointer;width:100%;margin-top:6px}
+
+    footer{padding:30px 0;color:#6a746e;font-size:14px;border-top:1px solid rgba(11,61,46,.1)}
+    .footer-flex{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+    .float-call{display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;background:var(--green);color:white;padding:15px;border-radius:20px;text-align:center;font-weight:900;box-shadow:0 20px 50px rgba(0,0,0,.24)}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .hero-grid,.trust,.zones,.contact-wrap{grid-template-columns:1fr}
+      .hero-card{min-height:390px}
+      .services,.gallery{grid-template-columns:1fr}
+      .section-head{display:block}
+      .section-head p{margin-top:12px}
+      .proof{grid-template-columns:1fr 1fr 1fr}
+      .float-call{display:block}
+      body{padding-bottom:72px}
+    }
+
+    @media(max-width:560px){
+      .nav{height:66px}
+      .brand{font-size:18px}
+      .call-btn{display:none}
+      .hero{padding-top:34px}
+      .proof{grid-template-columns:1fr}
+      .hero-card{min-height:330px;border-radius:26px}
+      .trust,.contact-big,.zone-card,.contact-card{border-radius:26px;padding:24px}
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Accueil Debard Nettoyage">
+        <span class="logo">D</span>
+        <span>Debard.Nettoyage</span>
+      </a>
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="#services">Services</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#zones">Zones</a>
+        <a href="#contact">Devis gratuit</a>
+      </nav>
+      <a class="call-btn" href="tel:+33767621658">📞 07 67 62 16 58</a>
+    </div>
+  </header>
 
-<!-- NAV -->
-<nav id="n">
-  <div class="nav-logo">Debard <i>Artisan</i></div>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#hydro">Hydrofugation</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <a href="tel:0665730562" class="nav-tel">06 65 73 05 62</a>
-</nav>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">✅ Artisan déclaré · SIREN 948 779 996</div>
+          <h1>Nettoyage toiture, façade & terrasse.</h1>
+          <p>Redonnez un aspect neuf à votre maison avec un nettoyage professionnel, soigné et adapté à chaque surface. Intervention rapide autour de Dinard, Saint-Malo, Rennes, Dinan et Avranches.</p>
+          <div class="actions">
+            <a class="primary-btn" href="tel:+33767621658">📞 Appeler maintenant</a>
+            <a class="secondary-btn" href="mailto:fraimdebard35800@gmail.com?subject=Demande%20de%20devis%20nettoyage&body=Bonjour,%0D%0AJe%20souhaite%20un%20devis%20pour%20un%20nettoyage.%0D%0AType%20de%20surface%20:%0D%0ACommune%20:%0D%0AT%C3%A9l%C3%A9phone%20:%0D%0A">✉️ Demander un devis</a>
+          </div>
+          <div class="proof">
+            <div><b>3+</b><span>ans d'expérience</span></div>
+            <div><b>35 · 50 · 22</b><span>secteur couvert</span></div>
+            <div><b>Devis 0€</b><span>sans engagement</span></div>
+          </div>
+        </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-deco">D</div>
-  <div class="hero-content">
-    <div class="hero-tag">Artisan indépendant · Saint-Malo · Dinard</div>
-    <h1 class="hero-h1">
-      Nettoyage façades<br>
-      <em>& toitures.</em>
-    </h1>
-    <div class="hero-row">
-      <p class="hero-sub">
-        Jacques Debard redonne vie aux tuiles, ardoises, façades et bardages. 
-        Sans nettoyeur haute pression, avec des produits de qualité professionnelle. 
-        Résultat visible avant toute décision — échantillon gratuit sur place.
-      </p>
-      <div class="hero-actions">
-        <a href="tel:0665730562" class="btn-fire">
-          Appeler Jacques
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <span class="hero-devis">Devis &amp; échantillon gratuits sur place</span>
+        <aside class="hero-card" aria-label="Exemple avant après nettoyage toiture">
+          <!-- Remplace le fichier ci-dessous par ton image optimisée principale -->
+          <img src="images/toiture-tuiles-avant-apres.jpg" alt="Avant après nettoyage toiture en tuiles" />
+          <div class="hero-caption">
+            <h2>Résultat visible immédiatement</h2>
+            <p>Traitement anti-mousse · nettoyage adapté · protection longue durée</p>
+          </div>
+        </aside>
       </div>
-    </div>
-  </div>
-  <div class="hero-scroll">Défiler</div>
-</section>
+    </section>
 
-<!-- STRIP -->
-<div class="strip">
-  <div class="strip-track">
-    <span class="strip-item">Pierre <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Briques <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Marbres <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Crépis <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Façades peintes <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Bardages <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Toitures <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Bois <span class="strip-sep">◆</span></span>
-    <span class="strip-item">PVC <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Bitumes <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Gouttières <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Pierre <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Briques <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Marbres <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Crépis <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Façades peintes <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Bardages <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Toitures <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Bois <span class="strip-sep">◆</span></span>
-    <span class="strip-item">PVC <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Bitumes <span class="strip-sep">◆</span></span>
-    <span class="strip-item">Gouttières <span class="strip-sep">◆</span></span>
-  </div>
-</div>
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Prestations</p>
+            <h2>Tout l'extérieur de votre maison, propre et protégé.</h2>
+          </div>
+          <p>Chaque intervention est adaptée au support : toiture, enduit, pierre, pavés, dallage, muret ou façade. L'objectif : nettoyer sans abîmer.</p>
+        </div>
 
-<!-- PROMESSE -->
-<section class="promesse r" id="promesse">
-  <div class="prm-left">
-    <h2>
-      Redonne vie<br>
-      aux surfaces<br>
-      <em>de votre bien.</em>
-    </h2>
-    <p class="sub">
-      Mousse, lichens, salissures, efflorescences — vos surfaces extérieures subissent les agressions du temps. Jacques intervient avec les bons produits pour nettoyer, protéger et prolonger durablement la vie de vos matériaux.
-    </p>
-  </div>
-  <div class="prm-right r r2">
-    <div class="badge">
-      <div class="badge-icon">🚫</div>
-      <div>
-        <div class="badge-title">Zéro haute pression</div>
-        <div class="badge-desc">Nos travaux sont réalisés sans nettoyeur haute pression — vos matériaux et joints sont préservés.</div>
+        <div class="services">
+          <article class="service"><div class="icon">🏠</div><h3>Nettoyage toiture</h3><p>Démoussage, nettoyage basse ou haute pression selon le support, traitement anti-mousse et hydrofuge possible.</p></article>
+          <article class="service"><div class="icon">🧱</div><h3>Nettoyage façade</h3><p>Élimination des coulures rouges, mousses, algues, salissures et traces liées à l'humidité.</p></article>
+          <article class="service"><div class="icon">🛡️</div><h3>Traitement hydrofuge</h3><p>Protection durable contre l'eau, les infiltrations et le retour rapide des salissures.</p></article>
+          <article class="service"><div class="icon">🪨</div><h3>Terrasses & dallages</h3><p>Remise à neuf des allées, pavés, terrasses, escaliers extérieurs et contours de maison.</p></article>
+          <article class="service"><div class="icon">🌿</div><h3>Murets & clôtures</h3><p>Nettoyage des pierres, murs, clôtures, bordures et maçonneries extérieures.</p></article>
+          <article class="service"><div class="icon">🏢</div><h3>Professionnels</h3><p>Intervention sur bâtiments agricoles, locaux commerciaux, bureaux et surfaces importantes.</p></article>
+        </div>
       </div>
-    </div>
-    <div class="badge">
-      <div class="badge-icon">🎁</div>
-      <div>
-        <div class="badge-title">Échantillon gratuit</div>
-        <div class="badge-desc">Jacques traite une zone test sur place. Vous voyez le résultat avant de décider.</div>
+    </section>
+
+    <section class="section" id="realisations">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Avant / Après</p>
+            <h2>Le résultat parle de lui-même.</h2>
+          </div>
+          <p>Des transformations nettes, visibles en une seule intervention, avec un rendu propre et durable.</p>
+        </div>
+
+        <div class="gallery">
+          <article class="work"><img src="images/facade-avant-apres.jpg" alt="Avant après nettoyage de façade" /><div><h3>Nettoyage de façade</h3><p>Coulures rouges et traces d'humidité supprimées.</p></div></article>
+          <article class="work"><img src="images/toiture-ardoise-avant-apres.jpg" alt="Avant après nettoyage toiture ardoise" /><div><h3>Démoussage toiture ardoise</h3><p>Traitement complet avec résultat propre et homogène.</p></div></article>
+          <article class="work"><img src="images/allee-avant-apres.jpg" alt="Avant après nettoyage allée pavée" /><div><h3>Nettoyage allée & dallage</h3><p>Pavés nettoyés, mousses éliminées, aspect comme neuf.</p></div></article>
+          <article class="work"><img src="images/toiture-tuiles-avant-apres-2.jpg" alt="Avant après nettoyage toiture tuiles" /><div><h3>Toiture tuiles</h3><p>Nettoyage visible immédiatement et finition soignée.</p></div></article>
+        </div>
       </div>
-    </div>
-    <div class="badge">
-      <div class="badge-icon">🛡️</div>
-      <div>
-        <div class="badge-title">Garantie 5 à 7 ans</div>
-        <div class="badge-desc">Chaque traitement hydrofuge est garanti. Une protection longue durée pour votre patrimoine.</div>
+    </section>
+
+    <section class="section">
+      <div class="container trust">
+        <div>
+          <p class="eyebrow" style="color:var(--lime)">Pourquoi nous choisir</p>
+          <h2>Une intervention sérieuse, propre et rassurante.</h2>
+          <p>Votre maison est traitée avec soin. Nous adaptons la méthode au matériau pour éviter les dégâts et obtenir un résultat durable.</p>
+        </div>
+        <div class="checks">
+          <div class="check">✅ Diagnostic rapide avant intervention</div>
+          <div class="check">✅ Nettoyage adapté à chaque surface</div>
+          <div class="check">✅ Résultat immédiat et finitions propres</div>
+          <div class="check">✅ Devis gratuit et clair avant travaux</div>
+        </div>
       </div>
-    </div>
-    <div class="badge">
-      <div class="badge-icon">⚗️</div>
-      <div>
-        <div class="badge-title">Produits professionnels</div>
-        <div class="badge-desc">Fongicide, antimousse, hydrofuge — tous les produits utilisés sont de qualité professionnelle.</div>
+    </section>
+
+    <section class="section" id="zones">
+      <div class="container zones">
+        <div class="zone-card">
+          <p class="eyebrow">Zone d'intervention</p>
+          <h2>Basé à Dinard, mobile sur Bretagne & alentours.</h2>
+          <p>Nous intervenons principalement en Ille-et-Vilaine, Manche et Côtes-d'Armor. Contactez-nous pour vérifier votre commune.</p>
+          <div class="city-list">
+            <span>Dinard</span><span>Saint-Malo</span><span>Rennes</span><span>Dinan</span><span>Fougères</span><span>Avranches</span><span>Saint-Lô</span><span>Granville</span><span>Saint-Brieuc</span><span>Et alentours</span>
+          </div>
+        </div>
+        <div class="zone-card">
+          <p class="eyebrow">Devis rapide</p>
+          <h2>Envoyez vos photos, recevez une estimation.</h2>
+          <p>Pour aller vite : envoyez une photo de la toiture, façade ou terrasse avec votre commune. Nous vous répondons rapidement.</p>
+          <div class="actions" style="margin-top:22px;margin-bottom:0">
+            <a class="primary-btn" href="tel:+33767621658">📞 Appeler</a>
+            <a class="secondary-btn" href="mailto:fraimdebard35800@gmail.com?subject=Demande%20de%20devis%20avec%20photos">✉️ Envoyer des photos</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- SERVICES -->
-<section class="services r" id="services">
-  <div class="sec-label">Nos prestations</div>
-  <h2 class="sec-h2">Ce que nous <em>traitons.</em></h2>
-  <div class="svc-grid">
+    <section class="section" id="contact">
+      <div class="container contact-wrap">
+        <div class="contact-big">
+          <p class="eyebrow" style="color:var(--lime)">Contact</p>
+          <h2>Devis gratuit & sans engagement.</h2>
+          <p>Un appel, quelques photos, et vous avez une estimation claire pour remettre vos extérieurs au propre.</p>
+          <div class="contact-lines">
+            <a class="line" href="tel:+33767621658"><small>Téléphone</small><b>07 67 62 16 58</b></a>
+            <a class="line" href="mailto:fraimdebard35800@gmail.com"><small>Email</small><b>fraimdebard35800@gmail.com</b></a>
+            <div class="line"><small>Adresse</small><b>57 rue des Minées, 35800 Dinard</b></div>
+            <div class="line"><small>SIREN</small><b>948 779 996</b></div>
+          </div>
+        </div>
 
-    <div class="svc">
-      <div class="svc-n">01</div>
-      <div class="svc-name">Toitures</div>
-      <div class="svc-mats">Tuiles · Ardoises · Bac acier · Bitumes</div>
-      <div class="svc-desc">Nettoyage complet, démoussage en profondeur et hydrofugation. Une tuile protégée repousse l'eau et les micro-organismes — les saletés sont emportées naturellement par la pluie.</div>
-      <span class="svc-pill">Garantie 5–7 ans</span>
-    </div>
-
-    <div class="svc">
-      <div class="svc-n">02</div>
-      <div class="svc-name">Façades & Crépis</div>
-      <div class="svc-mats">Pierre · Briques · Marbres · Crépis · Façades peintes</div>
-      <div class="svc-desc">Démoussage, traitement fongicide et imperméabilisation. Les façades retrouvent leur aspect d'origine et sont protégées contre les infiltrations et efflorescences salines.</div>
-      <span class="svc-pill">Sans abrasion</span>
-    </div>
-
-    <div class="svc">
-      <div class="svc-n">03</div>
-      <div class="svc-name">Bardages & Bois</div>
-      <div class="svc-mats">Bois · PVC · Bardages extérieurs</div>
-      <div class="svc-desc">Nettoyage doux et traitement spécifique pour redonner chaleur et couleur au bois. PVC blanchi et bardages noircis retrouvent leur teinte d'origine.</div>
-      <span class="svc-pill">Produits pro</span>
-    </div>
-
-    <div class="svc">
-      <div class="svc-n">04</div>
-      <div class="svc-name">Gouttières</div>
-      <div class="svc-mats">Tous types de gouttières</div>
-      <div class="svc-desc">Curage et nettoyage complet. Des gouttières propres assurent une évacuation optimale des eaux pluviales et protègent la structure de votre bien contre les infiltrations.</div>
-      <span class="svc-pill">Devis gratuit</span>
-    </div>
-
-    <div class="svc">
-      <div class="svc-n">05</div>
-      <div class="svc-name">Hydrofugation</div>
-      <div class="svc-mats">Tous matériaux · Tous supports</div>
-      <div class="svc-desc">Protection imperméabilisante appliquée sur supports propres. Utilisable même par temps de pluie. Donne aux surfaces des propriétés autonettoyantes — efficacité prouvée 10 ans.</div>
-      <span class="svc-pill">10 ans d'efficacité</span>
-    </div>
-
-    <div class="svc" style="background:rgba(200,85,0,.08);border-left:3px solid var(--orange)">
-      <div class="svc-n" style="color:var(--orange)">→</div>
-      <div class="svc-name">Devis gratuit</div>
-      <div class="svc-mats" style="color:rgba(248,245,239,.4)">Sans engagement · Sur place</div>
-      <div class="svc-desc">Jacques se déplace gratuitement pour évaluer votre chantier. Il traite une zone test devant vous — aucune décision sans avoir vu le résultat.</div>
-      <a href="tel:0665730562" class="svc-pill" style="background:var(--orange);color:#fff;border-color:var(--orange)">06 65 73 05 62</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- HYDROFUGE AVANTAGES -->
-<section class="hydro r" id="hydro">
-  <div class="hydro-left">
-    <div class="sec-label">Pourquoi l'hydrofugation</div>
-    <h2>Les avantages<br><em>du traitement.</em></h2>
-    <p>Une tuile ou une façade traitée bénéficie d'une protection complète. Les particules de mousse, lichens et saletés sont simplement emportées par la pluie.</p>
-
-    <div class="hydro-guarantee">
-      <div class="hg-n">10</div>
-      <div class="hg-text">
-        <div class="hg-big">ans d'efficacité</div>
-        <div class="hg-sm">Hydrofuge tous matériaux<br>Garantie 5 à 7 ans</div>
+        <div class="contact-card">
+          <p class="eyebrow">Message rapide</p>
+          <h2>Préparez votre demande</h2>
+          <form class="form" action="mailto:fraimdebard35800@gmail.com" method="post" enctype="text/plain">
+            <input name="Nom" placeholder="Nom / Prénom" required>
+            <input name="Telephone" placeholder="Téléphone" required>
+            <input name="Commune" placeholder="Commune d'intervention" required>
+            <select name="Prestation" required>
+              <option value="">Type de prestation</option>
+              <option>Nettoyage toiture</option>
+              <option>Nettoyage façade</option>
+              <option>Terrasse / dallage / allée</option>
+              <option>Muret / clôture</option>
+              <option>Autre</option>
+            </select>
+            <textarea name="Message" placeholder="Décrivez rapidement votre besoin"></textarea>
+            <button class="primary-btn" type="submit">Envoyer la demande</button>
+          </form>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <div class="hydro-right r r2">
-    <div class="adv-row">
-      <div class="adv-dot"></div>
-      <div class="adv-text"><strong style="color:var(--off);font-weight:500">Hydrofuger</strong> — rend la surface imperméable à l'eau et aux agents atmosphériques</div>
+  <footer>
+    <div class="container footer-flex">
+      <span>© 2026 Debard.Nettoyage — Artisan nettoyage façades, toitures & dallages</span>
+      <span>SIREN 948 779 996 · Dinard</span>
     </div>
-    <div class="adv-row">
-      <div class="adv-dot"></div>
-      <div class="adv-text"><strong style="color:var(--off);font-weight:500">Protéger contre le gel</strong> — réduit les dégâts dus aux cycles gel/dégel hivernaux</div>
-    </div>
-    <div class="adv-row">
-      <div class="adv-dot"></div>
-      <div class="adv-text"><strong style="color:var(--off);font-weight:500">Propriétés autonettoyantes</strong> — les salissures ne s'accrochent plus et sont évacuées par la pluie</div>
-    </div>
-    <div class="adv-row">
-      <div class="adv-dot"></div>
-      <div class="adv-text"><strong style="color:var(--off);font-weight:500">Prolonger la durée de vie</strong> — vos tuiles, ardoises et façades durent bien plus longtemps</div>
-    </div>
-    <div class="adv-row">
-      <div class="adv-dot"></div>
-      <div class="adv-text"><strong style="color:var(--off);font-weight:500">Réduire les micro-organismes</strong> — mousse, lichens et algues ne repoussent plus</div>
-    </div>
-    <div class="adv-row">
-      <div class="adv-dot"></div>
-      <div class="adv-text"><strong style="color:var(--off);font-weight:500">Économiser l'énergie</strong> — des tuiles sèches isolent mieux que des tuiles humides</div>
-    </div>
-    <div class="adv-row">
-      <div class="adv-dot"></div>
-      <div class="adv-text"><strong style="color:var(--off);font-weight:500">Empêcher les efflorescences</strong> — les remontées salines et taches blanches disparaissent</div>
-    </div>
-    <div class="adv-row">
-      <div class="adv-dot"></div>
-      <div class="adv-text"><strong style="color:var(--off);font-weight:500">Longévité garantie</strong> — durabilité prouvée plus de 10 ans avec les produits Arcatex</div>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<!-- PROCESS -->
-<section class="process r">
-  <div class="sec-label">Comment ça se passe</div>
-  <h2 class="sec-h2">Simple &amp; <em>transparent.</em></h2>
-  <div class="process-grid">
-    <div class="step">
-      <div class="step-n">01</div>
-      <div class="step-t">Visite gratuite</div>
-      <div class="step-d">Jacques se déplace pour évaluer votre chantier, identifier les matériaux et établir un devis précis sans engagement.</div>
-    </div>
-    <div class="step">
-      <div class="step-n">02</div>
-      <div class="step-t">Échantillon sur place</div>
-      <div class="step-d">Il traite une zone test devant vous — vous constatez le résultat de visu avant toute décision. Zéro mauvaise surprise.</div>
-    </div>
-    <div class="step">
-      <div class="step-n">03</div>
-      <div class="step-t">Traitement professionnel</div>
-      <div class="step-d">Tous les supports sont nettoyés puis traités avec des produits fongicide, antimousse et hydrofuge de qualité pro. Sans haute pression.</div>
-    </div>
-    <div class="step">
-      <div class="step-n">04</div>
-      <div class="step-t">Garantie remise</div>
-      <div class="step-d">Protection hydrofuge garantie 5 à 7 ans avec protection hydrofuge. Votre bien est durablement protégé contre les agressions extérieures.</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-left">
-    <h2>Votre projet,<br><em>parlons-en.</em></h2>
-    <p>Un appel suffit. Jacques se déplace gratuitement pour établir un diagnostic sur place et vous proposer un échantillon de traitement — sans engagement de votre part.</p>
-    <a href="tel:0665730562" class="contact-btn">📞 Appeler Jacques →</a>
-  </div>
-  <div class="contact-right">
-    <div class="cline">
-      <div class="cline-icon">📞</div>
-      <div>
-        <div class="cline-label">Téléphone</div>
-        <div class="cline-val"><a href="tel:0665730562">06 65 73 05 62</a></div>
-      </div>
-    </div>
-    <div class="cline">
-      <div class="cline-icon">✉️</div>
-      <div>
-        <div class="cline-label">Email</div>
-        <div class="cline-val" style="font-size:15px"><a href="mailto:jdebard14@gmail.com">jdebard14@gmail.com</a></div>
-      </div>
-    </div>
-    <div class="cline">
-      <div class="cline-icon">📍</div>
-      <div>
-        <div class="cline-label">Adresse</div>
-        <div class="cline-val" style="font-size:15px">57 rue des Minées, 35800 Dinard</div>
-        <div class="cline-sub">SIREN 518 226 212</div>
-      </div>
-    </div>
-    <div class="zone-note">
-      <strong>Zone d'intervention</strong>
-      <span>Saint-Malo · Dinard · Dinan · Saint-Briac · Cancale · Côte d'Émeraude et environs</span>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="f-logo">Debard <i>Artisan</i></div>
-  <div class="f-mid">Entrepreneur individuel · SIREN 518 226 212</div>
-  <div class="f-right">Site Eden Drive Web</div>
-</footer>
-
-<script>
-const nav = document.getElementById('n');
-window.addEventListener('scroll', () => nav.classList.toggle('s', scrollY > 50));
-const io = new IntersectionObserver(
-  entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on') }),
-  {threshold: 0.07}
-);
-document.querySelectorAll('.r').forEach(el => io.observe(el));
-</script>
+  <a class="float-call" href="tel:+33767621658">📞 Appeler Debard Nettoyage</a>
 </body>
 </html>
